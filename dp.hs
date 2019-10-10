@@ -1,4 +1,4 @@
-maximo_subpalindromo :: [Char]-> Int
+maximo_subpalindromo :: [Char] -> Int
 maximo_subpalindromo string = foldr max 0 resultados
     where
         longitud = (length string) - 1
@@ -24,7 +24,7 @@ maximo_subpalindromo string = foldr max 0 resultados
         palindromo x y dp = if dp!!x!!y /= -1
             then (dp, dp!!x!!y)
             else if x == y
-                then (insertar x y 1 dp1, 1)
+                then (insertar x y 1 dp, 1)
                 else (insertar x y value dp1, value)
                     where
                         (dp1, value) = if x == (y-1) 
@@ -33,7 +33,7 @@ maximo_subpalindromo string = foldr max 0 resultados
         
         largoSubstring :: (Int, Int) -> [[Int]] -> ([[Int]], Int)
         largoSubstring (x, y) dp = if value == 1
-            then (dp1, y-x)
+            then (dp1, y-x+1)
             else (dp1, 0)
             where
                 (dp1, value) = palindromo x y dp
