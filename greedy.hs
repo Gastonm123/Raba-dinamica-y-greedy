@@ -46,4 +46,5 @@ maximo_matching arcos = maximizar_puntaje [] arcos_ordenados
                     (a, b, peso) = arco
                     bolsa_actualizada = a:b:bolsa
 
+-- Matching maximo : 85
 grafo = [(1, 2, 2),(1, 4, 17),(1, 5, 5),(2, 4, 7),(2, 3, 30),(3, 4, 1),(3, 6, 10),(4, 5, 16),(5, 6, 31),(4,6,50)]
