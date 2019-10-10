@@ -1,5 +1,5 @@
-maximo_subpalindromo :: [Char] -> Int
-maximo_subpalindromo string = foldr max 0 resultados
+maximo_subpalindromo :: [Char] -> (([[Int]], [Int]), [(Int, Int)])
+maximo_subpalindromo string = resultados -- foldr max 0 resultados
     where
         longitud = (length string) - 1
 
@@ -49,11 +49,12 @@ maximo_subpalindromo string = foldr max 0 resultados
                 (dp1, value) = palindromo x y dp
 
         -- funcion parecida a map pero q pasa la dp en cada llamada
-        calcularResultados dp [] = []
-        calcularResultados dp (x:xs) = value:(calcularResultados dp1 xs)
+        calcularResultados dp [] = (dp, [])
+        calcularResultados dp (x:xs) = (dp2, value:(recursion))
             where
                 (dp1, value) = largoSubstring x dp
+                (dp2, recursion) = calcularResultados dp1 xs
 
         dp = [[-1 | i <- [0..longitud]] | j <- [0..longitud]]
 
-        resultados = calcularResultados dp substrings
+        resultados = (calcularResultados dp substrings, substrings)-- calcularResultados dp substrings
