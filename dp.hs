@@ -13,16 +13,16 @@ maximo_subpalindromo string = foldr max 0 resultados
         int True = 1
         int False = 0
 
-        pali :: (Int, Int) -> [[Int]] -> ([[Int]], Int)       
+        pali :: Int -> Int -> [[Int]] -> ([[Int]], Int)       
         pali x y dp = if value == 1
             then (dp1, int (string!!x == string!!y))
             else (dp1, 0)
             where 
                 (dp1, value) = palindromo (x+1) (y-1) dp
         
-        palindromo :: (Int, Int) -> [[Int]] -> ([[Int]], Int)       
+        palindromo :: Int -> Int -> [[Int]] -> ([[Int]], Int)       
         palindromo x y dp = if dp!!x!!y /= -1
-            then dp!!x!!y
+            then (dp, dp!!x!!y)
             else if x == y
                 then (insertar x y 1 dp1, 1)
                 else (insertar x y value dp1, value)
