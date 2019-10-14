@@ -1,6 +1,5 @@
-
-maximo_subpalindromo :: [Char]-> Int
-maximo_subpalindromo string = foldr max 0 largos
+maximo_subpalindromo :: [Char] -> Int
+maximo_subpalindromo string = foldr max 0 resultados
     where
         longitud = (length string) - 1
 
