@@ -1,9 +1,9 @@
 maximo_subpalindromo :: [Char] -> Int
-maximo_subpalindromo string = foldr max 0 resultados
+maximo_subpalindromo string = foldr max 0 largos
     where
         longitud = (length string) - 1
 
-        substrings = [(y,x) | y <- [0..longitud], x <- [(y+1)..longitud]]
+        substrings = [(x,y) | x <- [0..longitud], y <- [x..longitud]]
         
         pali x y = if palindromo (x+1) (y-1)
             then (string!!x == string!!y)
